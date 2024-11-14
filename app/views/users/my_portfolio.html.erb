@@ -1,10 +1,10 @@
 <h1>Meu Portfólio</h1>
 <div class='search-area'>
   <h3>Procurar Ações</h3>
-  <%= form_tag '#', method: :get do %>
+  <%= form_tag search_stock_path, method: :get do %>
     <div class="form-group row">
       <div class="col-sm-9 no-right-padding">
-        <%= text_field_tag :stock, params[:stock], placeholder: "Símbolo do ticker da ação", autofocus: true, class: "form-control form-control-lg" %>
+        <%= text_field_tag :stock, params[:stock], placeholder: "Insira a Sigla da ação que você deseja consultar", autofocus: true, class: "form-control form-control-lg" %>
       </div>
       <div class="col-sm-3 no-left-padding">
         <%= button_tag type: :submit, class: "btn btn-success" do %>
@@ -14,3 +14,11 @@
     </div>
   <% end %>
 </div>
+
+<% if @stock %>
+  <div class="card card-header results-block">
+    <strong>Sigla: </strong> <%= @stock.ticker %>
+    <strong>Nome: </strong> <%= @stock.name %>
+    <strong>Preço: </strong> <%= @stock.last_price %>
+  </div>
+<% end %>

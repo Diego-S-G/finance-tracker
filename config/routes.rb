@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
 
   get 'my_portfolio', to: 'users#my_portfolio'
+  get 'search_stock', to: 'stocks#if_api_usage_limit'
 end
