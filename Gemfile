@@ -23,6 +23,9 @@ gem 'devise', '~> 4.7.1'
 gem 'hirb'
 gem 'devise-bootstrap-views', '~> 1.0'
 
+gem 'alphavantage'
+gem 'httparty'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
