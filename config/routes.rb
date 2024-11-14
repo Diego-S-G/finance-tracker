@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
+
+  get 'my_portfolio', to: 'users#my_portfolio'
 end
