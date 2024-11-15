@@ -20,3 +20,7 @@ require("channels")
 import Rails from '@rails/ujs';
 Rails.start();
 import "bootstrap"
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
