@@ -9,4 +9,8 @@ class UserStocksController < ApplicationController
     flash[:notice] = "Ação #{stock.name} foi adicionado ao seu portfólio com sucesso!"
     redirect_to my_portfolio_path
   end
+
+  def destroy
+    
+  end
 end
