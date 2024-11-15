@@ -1,7 +1,14 @@
 <% if @stock %>
   <div class="card card-header results-block mb-3">
-    <strong>Sigla: </strong> <%= @stock.ticker %>
-    <strong>Nome: </strong> <%= @stock.name %>
-    <strong>Preço: </strong> <%= @stock.last_price %>
+    <div class="d-flex justify-content-between">
+      <div style="margin-top: 5px">
+        <strong>Sigla: </strong> <%= @stock.ticker %>
+        <strong>Nome: </strong> <%= @stock.name %>
+        <strong>Preço: </strong> <%= @stock.last_price %>
+      </div>
+      <div style="margin-top: 0px; margin-left: 30px">
+        <%= button_to 'Adicionar ao Portfólio', user_stocks_path(user: current_user, ticker: @stock.ticker), class: "btn btn-success text-center" %>
+      </div>
+    </div>
   </div>
 <% end %>
