@@ -16,34 +16,33 @@
             <td><%= stock.name %></td>
             <td><%= stock.last_price %></td>
             <td>
-              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#staticBackdrop">
+              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-<%= stock.ticker %>">
                 Remover
               </button>
             </td>
           </tr>
+
+          <div class="modal fade" id="modal-<%= stock.ticker %>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalLabel-<%= stock.ticker %>" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel-<%= stock.ticker %>">Confirme exclusão</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Tem certeza que quer deixar de rastrear <strong><%= stock.name %></strong> (<%= stock.ticker %>)?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <%= button_to 'Remover', user_stock_path(stock), method: :delete, class: 'btn btn-danger' %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
       </tbody>
     </table>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Confirme exclusão.</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Tem certeza que quer deixar de rastrear esta ação?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <%= button_to 'Remover', '#', method: :delete, class: 'btn btn-danger' %>
-      </div>
-    </div>
   </div>
 </div>
