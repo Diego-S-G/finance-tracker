@@ -8,7 +8,15 @@
 
             <td><strong class="ml-2">Ações: </strong> <%= link_to 'Ver Perfil', '#', class: "btn btn btn-success" %></td>
             
-            <td><%= button_to 'Seguir Usuário','#', class: "btn btn-success text-center" %></td>
+            <% if current_user.not_friends_with?(friend.id) %>
+              <td><%= button_to 'Seguir Usuário', '#', class: "btn btn btn-success" %></td>
+            <% else %>
+            <td>
+              <span class="badge badge-secondary">
+                Já está seguindo este usuário!
+              </span>
+            </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
