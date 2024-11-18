@@ -9,6 +9,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :first_name, length: {minimum:3, maximum: 20}       
+  validates :last_name, length: {minimum:3, maximum: 20}       
+
 
   def stock_already_tracked?(ticker_symbol)
     stock = Stock.check_db(ticker_symbol)

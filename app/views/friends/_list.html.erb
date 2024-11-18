@@ -11,9 +11,16 @@
       <tbody>
         <% @user_friends.each do |friend| %>
           <tr>
-            <td><%= friend.first_name %></td>
+            <td>
+              <% if !friend.first_name %>
+                Usuário
+              <% else %>
+                <%= friend.first_name %>
+              <% end %>
+              </td>
             <td><%= friend.last_name %></td>
             <td>
+              <%= link_to 'Ver Perfil', user_path(friend), class: "btn btn-sm btn-success" %>
               <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-<%= friend.id %>">
                 Deixar de seguir
               </button>

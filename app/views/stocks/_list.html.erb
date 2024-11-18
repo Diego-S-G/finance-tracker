@@ -16,12 +16,30 @@
             <td><%= stock.name %></td>
             <td><%= stock.last_price %></td>
             <td>
-              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-<%= stock.ticker %>">
-                Remover
-              </button>
+              <% if current_user.can_track_stock?(stock.ticker)%>
+                <div style="margin-top: 0px;">
+                  <%= button_to 'Adicionar ao Portfólio', user_stocks_path(user: current_user, ticker: stock.ticker), class: "btn btn-success text-center" %>
+                </div>
+              <% elsif current_user != @user %>
+                <div>
+                  <span class="badge badge-secondary" style="margin-top: 7px;">
+                    Você já está rastreando 
+                    <% if !current_user.under_stock_limit? %>
+                      10 ações!
+                    <% end %>
+                    <% if current_user.stock_already_tracked?(stock.ticker) %>
+                      esta ação!
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+              <% if current_user == @user %>
+                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-<%= stock.ticker %>">
+                  Remover
+                </button>
+              <% end %>
             </td>
           </tr>
-
           <div class="modal fade" id="modal-<%= stock.ticker %>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalLabel-<%= stock.ticker %>" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">

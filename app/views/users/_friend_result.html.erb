@@ -6,10 +6,10 @@
           <tr>
             <td><strong>Nome: </strong> <%= friend.full_name %></td>
 
-            <td><strong class="ml-2">Ações: </strong> <%= link_to 'Ver Perfil', '#', class: "btn btn btn-success" %></td>
+            <td><strong class="ml-2">Ações: </strong> <%= link_to 'Ver Perfil', user_path(friend), class: "btn btn-sm btn-success" %></td>
             
             <% if current_user.not_friends_with?(friend.id) %>
-              <td><%= button_to 'Seguir Usuário', friendships_path(friend: friend), class: "btn btn btn-success" %></td>
+              <td><%= button_to 'Seguir Usuário', friendships_path(friend: friend), class: "btn btn-sm btn-success" %></td>
             <% else %>
             <td>
               <span class="badge badge-secondary">

@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
   def search
+    @user = current_user
     if params[:stock].present?
       @stock = Stock.new_lookup(params[:stock])
       if @stock
@@ -16,6 +17,7 @@ class StocksController < ApplicationController
   end
 
   def if_api_usage_limit
+    @user = current_user
     if params[:stock].present?
       @stock = Stock.find_by(ticker: params[:stock])
       if @stock

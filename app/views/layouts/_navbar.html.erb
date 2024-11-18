@@ -37,7 +37,7 @@
 
         <ul class="navbar-nav ml-auto mr-2">
           <li class="nav-item user-name">
-            <%= fa_icon 'user' %> <%= current_user.full_name %>
+            <%= fa_icon 'user' %> <%= current_user.full_name.truncate(25) %>
           </li>
           <li class="nav-item">
             <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>

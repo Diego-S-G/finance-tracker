@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy]
   get 'my_friends', to: 'users#my_friends'
   get 'search_friend', to: 'users#search_user_friend'
+
+  resources :users, only: [:show], :constraints => { :id => /[0-9|]+/ } #um estudante disse que se não fizer assim pode dar conflito com devise (edit creio)
 end
