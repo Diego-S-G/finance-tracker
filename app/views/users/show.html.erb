@@ -1,0 +1,39 @@
+<h2 class="mb-4">Detalhes do Usuário</h2>
+
+<div class="card card-header results-block mb-5">
+  <table class="col-md-12">
+    <tbody>
+      <tr>
+        <td><strong>Nome: </strong> <%= @user.full_name %></td>
+        <% if current_user.id == @user.id %>
+            <td><strong>Email: </strong> <%= @user.email %></td>
+        <% end %>    
+        <td>
+        <% if current_user.id != @user.id %>
+            <td>
+              <% if current_user.not_friends_with?(@user.id) %>
+                <%= link_to 'Seguir Usuário', friendships_path(friend: @user), class: "btn btn-sm btn-success", method: :post %>
+              <% else %>
+                <span class="badge badge-secondary">
+                  Já está seguindo este usuário!
+                </span>
+              <% end %>
+            </td>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Atualmente rastreando:</h2>
+
+<% if !@tracked_stocks.empty? %>
+  <%= render 'stocks/list'%>
+<% else %>
+    <% if current_user.id == @user.id %>
+        <p class='lead'>Você não está rastreando uma ação no momento.</p>
+    <% else %>
+        <p class='lead'>Este usuário não está rastreando uma ação no momento.</p>
+    <% end %>
+<% end %>

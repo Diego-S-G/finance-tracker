@@ -1,0 +1,25 @@
+<% if @friends %>
+  <div class="card card-header results-block mb-3">
+    <table class="col-md-12">
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td><strong>Nome: </strong> <%= friend.full_name %></td>
+
+            <td><strong class="ml-2">Ações: </strong> <%= link_to 'Ver Perfil', user_path(friend), class: "btn btn-sm btn-success" %></td>
+            
+            <% if current_user.not_friends_with?(friend.id) %>
+              <td><%= button_to 'Seguir Usuário', friendships_path(friend: friend), class: "btn btn-sm btn-success" %></td>
+            <% else %>
+            <td>
+              <span class="badge badge-secondary">
+                Já está seguindo este usuário!
+              </span>
+            </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

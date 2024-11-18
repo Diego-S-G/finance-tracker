@@ -1,0 +1,28 @@
+<% if @stock %>
+  <div class="card card-header results-block mb-3">
+    <div class="d-flex justify-content-between">
+      <div style="margin-top: 5px">
+        <strong>Sigla: </strong> <%= @stock.ticker %>
+        <strong>Nome: </strong> <%= @stock.name %>
+        <strong>Preço: </strong> <%= @stock.last_price %>
+      </div>
+      <% if current_user.can_track_stock?(@stock.ticker)%>
+        <div style="margin-top: 0px; margin-left: 30px">
+          <%= button_to 'Adicionar ao Portfólio', user_stocks_path(user: current_user, ticker: @stock.ticker), class: "btn btn-success text-center" %>
+        </div>
+      <% else %>  
+      <div>
+        <span class="badge badge-secondary" style="margin-top: 7px; margin-left: 10px">
+          Você já está rastreando 
+          <% if !current_user.under_stock_limit? %>
+            10 ações!
+          <% end %>
+          <% if current_user.stock_already_tracked?(@stock.ticker) %>
+            esta ação!
+          <% end %>
+        </span>
+      </div>
+      <% end %>  
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-9">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Sigla</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tracked_stocks.each do |stock| %>
+          <tr>
+            <th scope="row"><%= stock.ticker %></th>
+            <td><%= stock.name %></td>
+            <td><%= stock.last_price %></td>
+            <td>
+              <% if current_user.can_track_stock?(stock.ticker)%>
+                <div style="margin-top: 0px;">
+                  <%= button_to 'Adicionar ao Portfólio', user_stocks_path(user: current_user, ticker: stock.ticker), class: "btn btn-success text-center" %>
+                </div>
+              <% elsif current_user != @user %>
+                <div>
+                  <span class="badge badge-secondary" style="margin-top: 7px;">
+                    Você já está rastreando 
+                    <% if !current_user.under_stock_limit? %>
+                      10 ações!
+                    <% end %>
+                    <% if current_user.stock_already_tracked?(stock.ticker) %>
+                      esta ação!
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+              <% if current_user == @user %>
+                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-<%= stock.ticker %>">
+                  Remover
+                </button>
+              <% end %>
+            </td>
+          </tr>
+          <div class="modal fade" id="modal-<%= stock.ticker %>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalLabel-<%= stock.ticker %>" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel-<%= stock.ticker %>">Confirme exclusão</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Tem certeza que quer deixar de rastrear <strong><%= stock.name %></strong> (<%= stock.ticker %>)?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                  <%= button_to 'Remover', user_stock_path(stock), method: :delete, class: 'btn btn-danger' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
