@@ -1,11 +1,11 @@
-<h2>Detalhes do Usuário</h2>
+<h2 class="mb-4">Detalhes do Usuário</h2>
 
-<div class="card card-header results-block">
+<div class="card card-header results-block mb-5">
   <table class="col-md-12">
     <tbody>
       <tr>
         <td><strong>Nome: </strong> <%= @user.full_name %></td>
-        <% if current_user %>
+        <% if current_user.id == @user.id %>
             <td><strong>Email: </strong> <%= @user.email %></td>
         <% end %>    
         <td>
@@ -25,6 +25,8 @@
     </tbody>
   </table>
 </div>
+
+<h2>Atualmente rastreando:</h2>
 
 <% if !@tracked_stocks.empty? %>
   <%= render 'stocks/list'%>
