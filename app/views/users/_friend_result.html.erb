@@ -9,7 +9,7 @@
             <td><strong class="ml-2">Ações: </strong> <%= link_to 'Ver Perfil', '#', class: "btn btn btn-success" %></td>
             
             <% if current_user.not_friends_with?(friend.id) %>
-              <td><%= button_to 'Seguir Usuário', '#', class: "btn btn btn-success" %></td>
+              <td><%= button_to 'Seguir Usuário', friendships_path(friend: friend), class: "btn btn btn-success" %></td>
             <% else %>
             <td>
               <span class="badge badge-secondary">
