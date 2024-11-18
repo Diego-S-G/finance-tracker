@@ -1,0 +1,17 @@
+<% if @friends %>
+  <div class="card card-header results-block mb-3">
+    <table class="col-md-12">
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td><strong>Nome: </strong> <%= friend.full_name %></td>
+
+            <td><strong class="ml-2">Ações: </strong> <%= link_to 'Ver Perfil', '#', class: "btn btn btn-success" %></td>
+            
+            <td><%= button_to 'Seguir Usuário','#', class: "btn btn-success text-center" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

@@ -28,4 +28,15 @@ class User < ApplicationRecord
     return "#{first_name} #{last_name}" if first_name || last_name
     "Usuário"
   end
+
+  def self.search(entry)
+    entry.strip!
+    return nil if entry.empty?
+  
+    where(
+      "LOWER(first_name) LIKE :entry OR LOWER(last_name) LIKE :entry OR LOWER(email) LIKE :entry OR CONCAT(LOWER(first_name), ' ', LOWER(last_name)) LIKE :entry",
+      entry: "%#{entry.downcase}%"
+    ).distinct
+  end
+  
 end
