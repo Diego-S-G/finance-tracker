@@ -1,7 +1,7 @@
 # Finance Tracker
 <br/>
 
-Este é um dos projetos que fiz acompanhando o [curso do Mashrur Hossain na Udemy](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course) na minha trilha de aprendizado de Ruby e Rails.
+Este é um dos projetos que fiz acompanhando o [curso do Mashrur Hossain na Udemy](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course), na minha trilha de aprendizado de Ruby e Rails.
 <br/>
 
 O Finance Tracker é uma aplicação onde os usuários podem acompanhar e adicionar ações aos seus portifólios, além de seguir outros usuários e acompanhar suas ações. 
