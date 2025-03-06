@@ -1,24 +1,23 @@
-# README
+# Finance Tracker
+<br/>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este é um dos projetos que fiz acompanhando o [curso do Mashrur Hossain na Udemy](https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course) na minha trilha de aprendizado de Ruby e Rails.
+<br/>
 
-Things you may want to cover:
+O Finance Tracker é uma aplicação onde os usuários podem acompanhar e adicionar ações aos seus portifólios, além de seguir outros usuários e acompanhar suas ações. 
+<br/>
 
-* Ruby version
+Este projeto foi feito usando Ruby 2.6.10 e Rails 6.0.1 **(favor ler Problemas Conhecidos)**.
+<br/>
 
-* System dependencies
+## Funcionamento:
+https://github.com/user-attachments/assets/a0bedeb0-4647-42a1-b3cd-5ce4acae3c86
 
-* Configuration
+<br/>
+<br/>
 
-* Database creation
+## Problemas Conhecidos: 
+Esse projeto foi feito quando estava no início do aprendizado de Ruby, então ao criar o projeto sem perceber o criei usando ruby 3.3.5 e versões mais recentes do node/npm(não sei se isso afetou em si), então o projeto veio sem alguns arquivos que tive que colocar na mão(boot.rb e database.yml por exemplo) e algumas funcionalidades comprometidas;
+<br/>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Além disso, no curso foi usada uma API que não existe mais, então tive que utilizar outra (Alpha Vantage), que por sua vez possui um acesso limitado por dia. Por isso fiz alterações no código para o usuário adicionar ações tanto usando a API quanto sem bater na API.
