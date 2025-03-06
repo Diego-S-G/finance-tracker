@@ -12,7 +12,7 @@
         <% if current_user.id != @user.id %>
             <td>
               <% if current_user.not_friends_with?(@user.id) %>
-                <%= link_to 'Seguir Usuário', friendships_path(friend: @user), class: "btn btn-sm btn-success", method: :post %>
+                <%= button_to 'Seguir Usuário', friendships_path(friend: @user), class: "btn btn-sm btn-success" %>
               <% else %>
                 <span class="badge badge-secondary">
                   Já está seguindo este usuário!
