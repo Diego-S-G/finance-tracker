@@ -27,6 +27,9 @@ gem 'alphavantage'
 gem 'httparty'
 
 gem "font-awesome-rails"
+gem "nokogiri", "~> 1.13.10"
+gem 'activesupport', '6.0.1'
+gem 'concurrent-ruby', '1.3.4'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
